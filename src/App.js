@@ -17,9 +17,27 @@ class App extends React.Component {
     super();
 
     this.state = {
-      todoList: todos
+      todoList: todos,
+      todo: ''
     }
-    // console.log(this.state.todoList)
+
+  }
+
+  handleTodoChange = e => {
+    this.setState({
+      [e.target.todo]: e.target.value
+    })
+  }
+
+  addNewTask = e => {
+    e.preventDefault();
+    this.setState({
+      todoList: [
+        ...this.state.todoList,
+        { todo: this.state.todo }
+      ],
+      todo: ''
+    });
   }
 
   render() {
@@ -27,7 +45,9 @@ class App extends React.Component {
 
       < div >
         <TodoList todosList={this.state.todoList} />
-        <TodoForm />
+        <TodoForm
+          addNewTask={this.addNewTodo}
+          handleTodoChange={this.handleTodoChange} />
       </div >
 
     );

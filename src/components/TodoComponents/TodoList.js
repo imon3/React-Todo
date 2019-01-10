@@ -3,12 +3,11 @@
 
 import React from 'react';
 
-const TodoList = (props) => {
+function TodoList(props) {
     return (
         <div>
-            {props.todosList.map((todo, index) => {
-                console.log(todo)
-                return <div key={index}>{todo.todo}</div>
+            {props.todos.map((todo, index) => {
+                return <div key={index}>{todo.task}</div>
             })}
         </div>
     );

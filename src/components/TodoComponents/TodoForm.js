@@ -7,15 +7,16 @@ function TodoForm(props) {
         < form onSubmit={props.addNewTask} >
             <input
                 type="text"
-                name="todo"
                 placeholder="Enter Task Todo"
-                value={props.todo}
-                onChange={props.handleTodoChange}
+                value={props.inputText}
+                onChange={props.handleChanges}
             />
-            <button typre="submit" >Add Task</button>
-            <button typre="submit" >Clear Completed</button>
+            <button type="submit" onClick={props.addNewTask}>Add Task</button>
+            <button type="submit" >Clear Completed</button>
         </form >
     )
 }
+
+
 
 export default TodoForm;

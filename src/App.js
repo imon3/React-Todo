@@ -4,8 +4,16 @@ import TodoList from './components/TodoComponents/TodoList';
 import TodoForm from './components/TodoComponents/TodoForm';
 
 const todos = [
-  { todo: 'Walk dog' },
-  { todo: 'Wash car' }
+  {
+    task: 'Walk dog',
+    id: 0,
+    completed: false
+  },
+  {
+    task: 'Wash car',
+    id: 1,
+    completed: false
+  }
 ]
 
 class App extends React.Component {
@@ -18,36 +26,37 @@ class App extends React.Component {
 
     this.state = {
       todoList: todos,
-      todo: ''
+      inputText: ''
     }
-
   }
 
-  handleTodoChange = e => {
-    this.setState({
-      [e.target.todo]: e.target.value
-    })
+  handleChanges = e => {
+    this.setState({ inputText: e.target.value })
+    console.log(e.target.value);
   }
 
+  // Add New Task
   addNewTask = e => {
     e.preventDefault();
     this.setState({
-      todoList: [
-        ...this.state.todoList,
-        { todo: this.state.todo }
-      ],
-      todo: ''
-    });
+      todoList: [...this.state.todoList, {
+        task: this.state.inputText,
+        completed: 'false'
+      }],
+      inputText: ""
+    })
   }
 
   render() {
     return (
 
       < div >
-        <TodoList todosList={this.state.todoList} />
+        <TodoList todos={this.state.todoList} />
         <TodoForm
-          addNewTask={this.addNewTodo}
-          handleTodoChange={this.handleTodoChange} />
+          addNewTask={this.addNewTask}
+          inputText={this.state.inputText}
+          handleChanges={this.handleChanges}
+        />
       </div >
 
     );

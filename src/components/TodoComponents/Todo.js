@@ -1,9 +1,7 @@
-import Reacr from 'react'
+import React from 'react'
 
-function ToDo(props) {
-    return (
-        <div>
-            {props.todo}
-        </div>
-    )
+function Todo(props) {
+    return <div>{props.todo.task}</div>
 }
+
+export default Todo;

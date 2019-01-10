@@ -6,12 +6,12 @@ import TodoForm from './components/TodoComponents/TodoForm';
 const todos = [
   {
     task: 'Walk dog',
-    id: 0,
+    id: 1528817077286,
     completed: false
   },
   {
     task: 'Wash car',
-    id: 1,
+    id: 1528817084358,
     completed: false
   }
 ]
@@ -41,6 +41,7 @@ class App extends React.Component {
     this.setState({
       todoList: [...this.state.todoList, {
         task: this.state.inputText,
+        id: Date.now(),
         completed: 'false'
       }],
       inputText: ""
@@ -51,7 +52,8 @@ class App extends React.Component {
     return (
 
       < div >
-        <TodoList todos={this.state.todoList} />
+        <h1>Task Needed To Be Completed</h1>
+        <TodoList todosList={this.state.todoList} />
         <TodoForm
           addNewTask={this.addNewTask}
           inputText={this.state.inputText}

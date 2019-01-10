@@ -9,10 +9,11 @@ function TodoForm(props) {
                 type="text"
                 placeholder="Enter Task Todo"
                 value={props.inputText}
+                name='inputText'
                 onChange={props.handleChanges}
             />
             <button type="submit" onClick={props.addNewTask}>Add Task</button>
-            <button type="submit" >Clear Completed</button>
+            <button type="submit" >Clear Completed Task</button>
         </form >
     )
 }

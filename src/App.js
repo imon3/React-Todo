@@ -31,7 +31,7 @@ class App extends React.Component {
   }
 
   handleChanges = e => {
-    this.setState({ inputText: e.target.value })
+    this.setState({ [e.target.name]: e.target.value })
     console.log(e.target.value);
   }
 
@@ -48,12 +48,31 @@ class App extends React.Component {
     })
   }
 
+  // toggle completed to be true or false
+  toggleCompleted = (id) => {
+    this.setState({
+      todoList: this.state.todoList.map(todo => {
+        if (todo.id !== id) {
+          return todo;
+        } else {
+          return {
+            ...todo,
+            completed: !todo.completed
+          }
+        }
+      })
+    })
+  }
+
   render() {
     return (
 
       < div >
         <h1>Task Needed To Be Completed</h1>
-        <TodoList todosList={this.state.todoList} />
+        <TodoList
+          toggleCompleted={this.toggleCompleted}
+          todosList={this.state.todoList}
+        />
         <TodoForm
           addNewTask={this.addNewTask}
           inputText={this.state.inputText}

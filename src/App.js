@@ -3,7 +3,7 @@ import React from 'react';
 import TodoList from './components/TodoComponents/TodoList';
 import TodoForm from './components/TodoComponents/TodoForm';
 
-
+import './components/TodoComponents/Todo.css'
 
 const todos = [
   {
@@ -34,7 +34,6 @@ class App extends React.Component {
 
   handleChanges = e => {
     this.setState({ [e.target.name]: e.target.value })
-    console.log(e.target.value);
   }
 
   // Add New Task
@@ -44,26 +43,34 @@ class App extends React.Component {
       todoList: [...this.state.todoList, {
         task: this.state.inputText,
         id: Date.now(),
-        completed: 'false'
+        completed: false
       }],
       inputText: ""
     })
   }
 
   // toggle completed to be true or false
-  toggleCompleted = (id) => {
+  toggleCompleted = id => {
     this.setState({
       todoList: this.state.todoList.map(todo => {
-        if (todo.id !== id) {
-          return todo;
-        } else {
+        if (todo.id === id) {
           return {
             ...todo,
             completed: !todo.completed
           }
-        }
+        } return todo;
       })
     })
+  }
+
+  removeCompleted = e => {
+    e.preventDefault();
+    console.log(this.state)
+    this.setState({
+      todoList: this.state.todoList.filter(todo => {
+        return todo.completed !== true
+      })
+    }, () => console.log(this.state))
   }
 
   render() {
@@ -79,6 +86,7 @@ class App extends React.Component {
           addNewTask={this.addNewTask}
           inputText={this.state.inputText}
           handleChanges={this.handleChanges}
+          removeCompleted={this.removeCompleted}
         />
       </div >
 

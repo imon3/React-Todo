@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 function TodoForm(props) {
 
     return (
@@ -7,13 +8,13 @@ function TodoForm(props) {
         < form onSubmit={props.addNewTask} >
             <input
                 type="text"
-                placeholder="Enter Task Todo"
+                placeholder="Enter Task To do"
                 value={props.inputText}
                 name='inputText'
                 onChange={props.handleChanges}
             />
-            <button type="submit" onClick={props.addNewTask}>Add Task</button>
-            <button type="submit" onClick={props.removeCompleted}>Clear Completed Task</button>
+            <button className='accept' type="submit" onClick={props.addNewTask}>Add Task</button>
+            <button className='delete' type="submit" onClick={props.removeCompleted}>Clear Completed Task</button>
         </form >
     )
 }

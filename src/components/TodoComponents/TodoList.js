@@ -4,14 +4,13 @@
 import React from 'react';
 import Todo from './Todo';
 
+import './Todo.css'
+
 function TodoList(props) {
     return (
         <div>
             {props.todosList.map(todo => {
-                return <Todo
-                    toggleCompleted={props.toggleCompleted}
-                    key={todo.id}
-                    todo={todo} />
+                return <Todo className='todo' toggleCompleted={props.toggleCompleted} key={todo.id} todo={todo} />
             })}
         </div>
     );
